@@ -61,13 +61,14 @@ class Frame(wx.Frame):
         self.Destroy()
     #   putting icon on toolbar
     def setIcon(self):
-        icon = wx.Icon("icon.ico",wx.BITMAP_TYPE_ICO)
-        self.SetIcon(icon)
+        pass
+#         icon = wx.Icon("icon.ico",wx.BITMAP_TYPE_ICO)
+#         self.SetIcon(icon)
      #Opens previous game and loads and updates score
     def loadScore(self):
         if os.path.exists("bestscore.ini"):
             ff = open("bestscore.ini")
-            self.bstScore = ff.read()
+            self.bstScore = int(ff.read())
             ff.close()
      #Saves score and writes to file so it may be opened later
     def saveScore(self):
@@ -76,9 +77,9 @@ class Frame(wx.Frame):
         ff.close()
      #Initalize game so when it opens it displays text, score and all data needed for the game
     def initGame(self):
-        self.bgFont = wx.Font(50,wx.SWISS,wx.NORMAL,wx.BOLD,face=u"Roboto")
-        self.scFont = wx.Font(36,wx.SWISS,wx.NORMAL,wx.BOLD,face=u"Roboto")
-        self.smFont = wx.Font(12,wx.SWISS,wx.NORMAL,wx.NORMAL,face=u"Roboto")
+        self.bgFont = wx.Font(wx.FontInfo(50).FaceName('SWISS'))
+        self.scFont = wx.Font(wx.FontInfo(36).FaceName('SWISS'))
+        self.smFont = wx.Font(wx.FontInfo(12).FaceName('SWISS'))
         self.curScore = 0
         self.bstScore = 0
         self.loadScore()
